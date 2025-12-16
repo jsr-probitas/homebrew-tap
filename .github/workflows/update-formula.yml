@@ -1,0 +1,54 @@
+name: Update Formula
+
+on:
+  repository_dispatch:
+    types: [update-formula]
+  workflow_dispatch:
+
+jobs:
+  update-formula:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Fetch latest version from JSR
+        id: version
+        run: |
+          VERSION=$(curl -fsSL "https://jsr.io/@probitas/cli/meta.json" | jq -r '.latest')
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+          echo "Latest version: $VERSION"
+
+      - name: Update Formula version
+        run: |
+          # Update version in Formula
+          sed -i 's/version "[^"]*"/version "${{ steps.version.outputs.version }}"/' Formula/probitas.rb
+
+          # Show the change
+          echo "Updated Formula:"
+          grep 'version "' Formula/probitas.rb
+
+      - name: Check for changes
+        id: changes
+        run: |
+          if git diff --quiet Formula/probitas.rb; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "No changes detected"
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+            echo "Changes detected"
+            git diff Formula/probitas.rb
+          fi
+
+      - name: Commit and push
+        if: steps.changes.outputs.changed == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add Formula/probitas.rb
+          git commit -m "Update probitas formula to ${{ steps.version.outputs.version }}"
+          git push
