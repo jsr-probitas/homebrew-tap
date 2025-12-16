@@ -9,14 +9,15 @@ class Probitas < Formula
   license "MIT"
   version "0.0.0"
 
+  # Use repository tarball as source (required by Homebrew)
+  # Actual installation is done via install.sh from JSR
+  url "https://github.com/jsr-probitas/cli/archive/refs/heads/main.tar.gz"
+
   depends_on "deno"
 
   def install
     ENV["PROBITAS_VERSION"] = version.to_s
     ENV["PROBITAS_INSTALL_DIR"] = prefix
-    system "curl", "-fsSL",
-           "https://raw.githubusercontent.com/jsr-probitas/cli/main/install.sh",
-           "-o", "install.sh"
     system "sh", "install.sh"
   end
 
