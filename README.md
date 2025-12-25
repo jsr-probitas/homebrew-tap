@@ -1,12 +1,12 @@
 # Homebrew Tap for Probitas
 
-This is the official Homebrew tap for [Probitas CLI](https://github.com/jsr-probitas/cli).
+This is the official Homebrew tap for [Probitas CLI](https://github.com/probitas-test/cli).
 
 ## Installation
 
 ```bash
 # Add the tap
-brew tap jsr-probitas/tap
+brew tap probitas-test/tap
 
 # Install probitas
 brew install probitas
@@ -15,7 +15,7 @@ brew install probitas
 Or install directly:
 
 ```bash
-brew install jsr-probitas/tap/probitas
+brew install probitas-test/tap/probitas
 ```
 
 ## Upgrade
@@ -28,7 +28,7 @@ brew upgrade probitas
 
 ```bash
 brew uninstall probitas
-brew untap jsr-probitas/tap
+brew untap probitas-test/tap
 ```
 
 ## Requirements
