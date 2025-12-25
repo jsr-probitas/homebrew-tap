@@ -7,7 +7,7 @@ class Probitas < Formula
   desc "Scenario-based test and workflow execution framework CLI"
   homepage "https://github.com/probitas-test/cli"
   license "MIT"
-  version "0.12.1"
+  version "0.13.0"
 
   # Use repository tarball as source (required by Homebrew)
   # Actual installation is done via install.sh from JSR
