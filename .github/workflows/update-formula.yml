@@ -19,7 +19,7 @@ jobs:
       - name: Fetch latest version from JSR
         id: version
         run: |
-          VERSION=$(curl -fsSL "https://jsr.io/@probitas/cli/meta.json" | jq -r '.latest')
+          VERSION=$(curl -fsSL "https://jsr.io/@probitas/probitas/meta.json" | jq -r '.latest')
           echo "version=$VERSION" >> "$GITHUB_OUTPUT"
           echo "Latest version: $VERSION"
 
