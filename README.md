@@ -1,6 +1,6 @@
 # Homebrew Tap for Probitas
 
-This is the official Homebrew tap for [Probitas CLI](https://github.com/probitas-test/cli).
+This is the official Homebrew tap for [Probitas](https://github.com/probitas-test/probitas).
 
 ## Installation
 

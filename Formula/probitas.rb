@@ -5,13 +5,13 @@
 # Install: brew install probitas-test/tap/probitas
 class Probitas < Formula
   desc "Scenario-based test and workflow execution framework CLI"
-  homepage "https://github.com/probitas-test/cli"
+  homepage "https://github.com/probitas-test/probitas"
   license "MIT"
   version "0.13.0"
 
   # Use repository tarball as source (required by Homebrew)
   # Actual installation is done via install.sh from JSR
-  url "https://github.com/probitas-test/cli/archive/refs/heads/main.tar.gz"
+  url "https://github.com/probitas-test/probitas/archive/refs/heads/main.tar.gz"
 
   depends_on "deno"
 
